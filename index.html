@@ -5,161 +5,269 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Khalifa Contracting</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
+        .tab-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .tab-section.active {
+            display: block;
+        }
+
+        .nav-link.active {
+            color: #fbbf24;
+            border-bottom: 2px solid #fbbf24;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
-<body class="bg-slate-950 text-white">
+<body class="bg-slate-950 text-white"
+    style="background-image: radial-gradient(circle at top right, rgba(251,191,36,0.08), transparent 35%);">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+    <nav class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-amber-400">Khalifa</h1>
+            <h1 class="text-2xl font-bold text-amber-400">Khalifa Contracting</h1>
 
-            <div class="space-x-8 hidden md:block">
-                <a href="#services" class="hover:text-amber-400 transition">Services</a>
-                <a href="#about" class="hover:text-amber-400 transition">About</a>
-                <a href="#contact" class="hover:text-amber-400 transition">Contact</a>
+            <div class="hidden md:flex gap-8">
+                <button class="nav-link active hover:text-amber-400" onclick="showTab('home', this)">Home</button>
+                <button class="nav-link hover:text-amber-400" onclick="showTab('about', this)">About Us</button>
+                <button class="nav-link hover:text-amber-400" onclick="showTab('services', this)">Services</button>
+                <button class="nav-link hover:text-amber-400" onclick="showTab('projects', this)">Projects</button>
+                <button class="nav-link hover:text-amber-400" onclick="showTab('careers', this)">Careers</button>
+                <button class="nav-link hover:text-amber-400" onclick="showTab('gallery', this)">Gallery</button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section
-        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 px-6">
-        <div class="text-center max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                Reliable <span class="text-amber-400">Contracting</span><br />
-                Solutions in Qatar
-            </h1>
+    <!-- Main Content -->
+    <main class="flex-grow">
 
-            <p class="text-lg md:text-xl text-slate-300 leading-8 mb-8">
-                Delivering manpower solutions, project execution support,
-                facility services, and operational excellence for modern businesses.
+        <section id="home" class="tab-section active max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-5xl font-bold mb-6">Welcome to <span class="text-amber-400">Khalifa Contracting</span></h2>
+            <p class="text-slate-300 text-lg leading-8">
+                Trusted contracting and manpower solutions provider serving businesses across Qatar.
             </p>
+        </section>
 
-            <a href="#services"
-                class="inline-block bg-amber-400 text-slate-950 font-semibold px-8 py-4 rounded-full hover:scale-105 transition duration-300 shadow-xl">
-                Explore Services
-            </a>
-        </div>
-    </section>
+        <section id="about" class="tab-section max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-4xl font-bold mb-6 text-amber-400">About Us</h2>
+            <p class="text-slate-300 leading-8">
+                Khalifa Contracting provides workforce solutions, project support, and operational excellence.
+            </p>
+        </section>
 
-    <!-- Stats -->
-    <section class="py-24 px-6 bg-slate-900">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            <div class="reveal bg-slate-800 p-10 rounded-3xl shadow-xl text-center">
-                <h2 class="text-5xl font-bold text-amber-400 mb-3 counter" data-target="15">0</h2>
-                <p class="text-slate-300">Years Experience</p>
-            </div>
-
-            <div class="reveal bg-slate-800 p-10 rounded-3xl shadow-xl text-center">
-                <h2 class="text-5xl font-bold text-amber-400 mb-3 counter" data-target="250">0</h2>
-                <p class="text-slate-300">Projects Delivered</p>
-            </div>
-
-            <div class="reveal bg-slate-800 p-10 rounded-3xl shadow-xl text-center">
-                <h2 class="text-5xl font-bold text-amber-400 mb-3 counter" data-target="1000">0</h2>
-                <p class="text-slate-300">Workforce Managed</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="py-28 px-6">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                Our <span class="text-amber-400">Services</span>
-            </h2>
-            <p class="text-slate-400 mb-14">Built for scale, reliability, and operational efficiency.</p>
+        <section id="services" class="tab-section max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-4xl font-bold mb-10 text-amber-400">Services</h2>
 
             <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Service 1 -->
                 <div
-                    class="reveal bg-slate-900 border border-slate-800 p-8 rounded-3xl hover:-translate-y-2 transition">
-                    <h3 class="text-2xl font-semibold text-amber-400 mb-4">Manpower Supply</h3>
-                    <p class="text-slate-300">Qualified workforce deployment for industrial and commercial sectors.</p>
+                    class="group relative bg-slate-900 p-8 rounded-2xl border border-slate-800 h-56 overflow-hidden cursor-pointer transition duration-300 hover:scale-105 hover:border-amber-400 shadow-lg">
+
+                    <h3
+                        class="text-xl font-semibold text-white absolute left-8 top-1/2 -translate-y-1/2 transition-all duration-500 group-hover:top-8 group-hover:translate-y-0">
+                        Manpower Supply
+                    </h3>
+
+                    <p
+                        class="text-slate-300 absolute left-8 right-8 bottom-8 opacity-0 translate-y-6 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                        Skilled and semi-skilled workforce deployment for construction,
+                        logistics, industrial operations, and facility management.
+                    </p>
                 </div>
 
+                <!-- Service 2 -->
                 <div
-                    class="reveal bg-slate-900 border border-slate-800 p-8 rounded-3xl hover:-translate-y-2 transition">
-                    <h3 class="text-2xl font-semibold text-amber-400 mb-4">PRO Services</h3>
-                    <p class="text-slate-300">Visa processing, company documentation, approvals, and compliance.</p>
+                    class="group relative bg-slate-900 p-8 rounded-2xl border border-slate-800 h-56 overflow-hidden cursor-pointer transition duration-300 hover:scale-105 hover:border-amber-400 shadow-lg">
+
+                    <h3
+                        class="text-xl font-semibold text-white absolute left-8 top-1/2 -translate-y-1/2 transition-all duration-500 group-hover:top-8 group-hover:translate-y-0">
+                        PRO Services
+                    </h3>
+
+                    <p
+                        class="text-slate-300 absolute left-8 right-8 bottom-8 opacity-0 translate-y-6 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                        Company formation, visa processing, labor approvals,
+                        licensing, renewals, and documentation support.
+                    </p>
                 </div>
 
+                <!-- Service 3 -->
                 <div
-                    class="reveal bg-slate-900 border border-slate-800 p-8 rounded-3xl hover:-translate-y-2 transition">
-                    <h3 class="text-2xl font-semibold text-amber-400 mb-4">Project Support</h3>
-                    <p class="text-slate-300">Logistics, operations, project coordination, and facility services.</p>
+                    class="group relative bg-slate-900 p-8 rounded-2xl border border-slate-800 h-56 overflow-hidden cursor-pointer transition duration-300 hover:scale-105 hover:border-amber-400 shadow-lg">
+
+                    <h3
+                        class="text-xl font-semibold text-white absolute left-8 top-1/2 -translate-y-1/2 transition-all duration-500 group-hover:top-8 group-hover:translate-y-0">
+                        Project Support
+                    </h3>
+
+                    <p
+                        class="text-slate-300 absolute left-8 right-8 bottom-8 opacity-0 translate-y-6 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                        Project coordination, logistics, operational planning,
+                        and execution support tailored for client needs.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div
+                    class="group relative bg-slate-900 p-8 rounded-2xl border border-slate-800 h-56 overflow-hidden cursor-pointer transition duration-300 hover:scale-105 hover:border-amber-400 shadow-lg">
+
+                    <h3
+                        class="text-xl font-semibold text-white absolute left-8 top-1/2 -translate-y-1/2 transition-all duration-500 group-hover:top-8 group-hover:translate-y-0">
+                        Facility Management
+                    </h3>
+
+                    <p
+                        class="text-slate-300 absolute left-8 right-8 bottom-8 opacity-0 translate-y-6 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                        Maintenance, housekeeping, technical staffing,
+                        and operational facility support services.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div
+                    class="group relative bg-slate-900 p-8 rounded-2xl border border-slate-800 h-56 overflow-hidden cursor-pointer transition duration-300 hover:scale-105 hover:border-amber-400 shadow-lg">
+
+                    <h3
+                        class="text-xl font-semibold text-white absolute left-8 top-1/2 -translate-y-1/2 transition-all duration-500 group-hover:top-8 group-hover:translate-y-0">
+                        Recruitment Solutions
+                    </h3>
+
+                    <p
+                        class="text-slate-300 absolute left-8 right-8 bottom-8 opacity-0 translate-y-6 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                        Talent sourcing, screening, onboarding,
+                        and workforce management for multiple industries.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div
+                    class="group relative bg-slate-900 p-8 rounded-2xl border border-slate-800 h-56 overflow-hidden cursor-pointer transition duration-300 hover:scale-105 hover:border-amber-400 shadow-lg">
+
+                    <h3
+                        class="text-xl font-semibold text-white absolute left-8 top-1/2 -translate-y-1/2 transition-all duration-500 group-hover:top-8 group-hover:translate-y-0">
+                        Logistics Support
+                    </h3>
+
+                    <p
+                        class="text-slate-300 absolute left-8 right-8 bottom-8 opacity-0 translate-y-6 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                        Transportation coordination, material handling,
+                        warehousing, and supply chain support.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects" class="tab-section max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-4xl font-bold mb-10 text-amber-400">Projects</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800">
+                    <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231"
+                        class="h-56 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Commercial Tower Project</h3>
+                        <p class="text-slate-400">Doha, Qatar</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800">
+                    <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da"
+                        class="h-56 w-full object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Industrial Facility Support</h3>
+                        <p class="text-slate-400">Al Wakrah, Qatar</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About -->
-    <section id="about" class="py-24 px-6 bg-slate-900">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Why Choose Us</h2>
-            <p class="text-slate-300 text-lg leading-8">
-                We combine operational experience, workforce expertise, and execution discipline
-                to help organizations scale efficiently across Qatar.
-            </p>
-        </div>
-    </section>
+        <section id="careers" class="tab-section max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-4xl font-bold mb-6 text-amber-400">Careers</h2>
+            <p class="text-slate-300">Join our growing team and explore career opportunities.</p>
+        </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Contact Us</h2>
-            <p class="text-slate-300 mb-2">info@khalifacontracting.qa</p>
-            <p class="text-slate-300">+974 XXXX XXXX</p>
-        </div>
-    </section>
+        <section id="gallery" class="tab-section max-w-6xl mx-auto px-6 py-20">
+            <h2 class="text-4xl font-bold mb-8 text-amber-400">Gallery</h2>
 
-    <footer class="border-t border-slate-800 py-8 text-center text-slate-500">
-        © 2026 Khalifa Contracting. All rights reserved.
+            <div class="grid md:grid-cols-3 gap-6">
+                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5"
+                    class="rounded-xl h-64 w-full object-cover hover:scale-105 transition" />
+
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e"
+                    class="rounded-xl h-64 w-full object-cover hover:scale-105 transition" />
+
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab"
+                    class="rounded-xl h-64 w-full object-cover hover:scale-105 transition" />
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold text-amber-400 mb-4">Khalifa Contracting</h3>
+                <p class="text-slate-400">
+                    Reliable manpower and contracting solutions across Qatar.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li>Home</li>
+                    <li>Services</li>
+                    <li>Projects</li>
+                    <li>Careers</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-4">Contact</h4>
+                <p class="text-slate-400">info@khalifacontracting.qa</p>
+                <p class="text-slate-400">+974 XXXX XXXX</p>
+            </div>
+        </div>
+
+        <div class="text-center py-4 border-t border-slate-800 text-slate-500 text-sm">
+            © 2026 Khalifa Contracting. All rights reserved.
+        </div>
     </footer>
 
     <script>
-        // counter animation
-        document.querySelectorAll('.counter').forEach(counter => {
-            const updateCounter = () => {
-                const target = +counter.getAttribute('data-target');
-                const current = +counter.innerText;
-                const increment = target / 100;
-
-                if (current < target) {
-                    counter.innerText = Math.ceil(current + increment);
-                    setTimeout(updateCounter, 20);
-                } else {
-                    counter.innerText = target + "+";
-                }
-            };
-            updateCounter();
-        });
-
-        // reveal animation
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+        function showTab(tabId, element) {
+            document.querySelectorAll('.tab-section').forEach(section => {
+                section.classList.remove('active');
             });
-        });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            document.getElementById(tabId).classList.add('active');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            element.classList.add('active');
+        }
     </script>
 
 </body>
